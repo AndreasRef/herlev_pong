@@ -1,7 +1,7 @@
 function Ball() {
 
-  this.init = function() {
-    this.x = width / 2;
+  this.init = function(_x) {
+    this.x = _x;
     this.y = 20;
     this.xv = -ballSpeed;
     this.yv = 0;
@@ -9,7 +9,10 @@ function Ball() {
   }
 
   this.show = function() {
+    push();
+    fill(255);
     ellipse(this.x, this.y, 30, 30);
+    pop();
   }
 
   this.move = function() {
