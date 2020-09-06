@@ -37,7 +37,7 @@ video.addEventListener('play', () => {
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
     faces = resizedDetections;    
     //faces = detections;
-  }, 100)
+  }, 200)
 })
 
 
@@ -95,8 +95,8 @@ function setup() {
 
   rectMode(CORNER);
 
-  player1 = new Player(leftBoarder + 40, height / 2, color(255, 0, 0));
-  player2 = new Player(rightBoarder - 40, height / 2, color(0, 0, 255));
+  player1 = new Player(leftBoarder + 40, height / 2, color("#CC1F2E"));
+  player2 = new Player(rightBoarder - 40, height / 2, color(" #22AFCB"));
   ball = new Ball();
   ball.init(rightInitBall);
 }
@@ -108,9 +108,11 @@ function draw() {
    ///////
   //Middle line
   push();
-  stroke(255);
-  strokeWeight(3 * 2);
-  line(0, height / 2, width, height / 2);
+  stroke(10,200,50);
+  strokeWeight(5 * 2);
+  drawingContext.setLineDash([15, 20]);
+  line(12, height / 2, leftBoarder-5, height / 2);
+  line(rightBoarder+12, height / 2, width-5, height / 2);
   pop();
 
   push();
@@ -139,13 +141,14 @@ function draw() {
   pop();
 
   if (playing) {
-    player1.show();
-    player2.show();
     
     
     if (ball.x >= leftBoarder && ball.x <= rightBoarder) { 
       ball.show();
     } 
+
+    player1.show();
+    player2.show();
 
     if (mouseMode) { //Mouse control for debugging
 
@@ -187,7 +190,7 @@ function draw() {
     let arrowColorAlpha = 200;
     
     if (leftPerson && leftNoseY < height / 2) {
-      arrowColor = color(255, 0, 0, arrowColorAlpha);
+      arrowColor = color(204, 31, 46, arrowColorAlpha);
     } else {
       arrowColor = color(0,0);
     }
@@ -195,7 +198,7 @@ function draw() {
     
     
     if (leftPerson && leftNoseY > height / 2) {
-      arrowColor = color(255, 0, 0, arrowColorAlpha);
+      arrowColor = color(204, 31, 46, arrowColorAlpha);
     } else {
       arrowColor = color(0,0);
     }
@@ -203,14 +206,14 @@ function draw() {
 
     // right
     if (rightPerson && rightNoseY < height / 2) {
-      arrowColor = color(0, 0, 255, arrowColorAlpha);
+      arrowColor = color(34, 175, 203, arrowColorAlpha);
     } else {
       arrowColor = color(0,0);
     }
     drawArrow(width - leftBoarder / 2, height/12, 25, arrowColor, false);
 
     if (rightPerson && rightNoseY > height / 2) {
-      arrowColor = color(0, 0, 255, arrowColorAlpha);
+      arrowColor = color(34, 175, 203, arrowColorAlpha);
     } else {
       arrowColor = color(0,0);
     }
@@ -270,12 +273,12 @@ function draw() {
     
 
     //console.log(faces[0])
-    push();
-    noFill();
-    strokeWeight(10);
-    stroke("#CC1F2E");
+    //push();
+    //noFill();
+    //strokeWeight(10);
+    //stroke("#CC1F2E");
     //drawCorners(faces[i].box.x, faces[i].box.y, faces[i].box.width, faces[i].box.height, 6);
-    pop();
+    //pop();
   }
 }
 
