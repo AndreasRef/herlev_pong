@@ -33,7 +33,7 @@ video.addEventListener('play', () => {
   faceapi.matchDimensions(canvas, displaySize)
 
   setInterval(async () => {
-    const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
+    const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions({ inputSize: 416 }))
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
     faces = resizedDetections;    
     //faces = detections;
